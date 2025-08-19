@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سکه شانسی</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background: #f0f0f0;
+    }
+
+    .coin-container {
+      perspective: 1000px; /* عمق سه بعدی */
+      margin-bottom: 20px;
+    }
+
+    .coin {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+    }
+
+    .coin-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      backface-visibility: hidden; /* پشت کارت مخفی شود */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .coin-front {
+      background: gold;
+    }
+
+    .coin-back {
+      background: silver;
+      transform: rotateY(180deg);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script defer>
+    window.addEventListener("DOMContentLoaded", function() {
+      const coin = document.querySelector(".coin");
+      const btn = document.getElementById("flipBtn");
+
+      btn.addEventListener("click", function() {
+        // زاویه تصادفی بین 720 تا 1440 درجه
+        const randomDeg = Math.floor(Math.random() * 720 + 720);
+        coin.style.transform = "rotateY(" + randomDeg + "deg)";
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="coin-container">
+    <div class="coin">
+      <div class="coin-face coin-front">Heads</div>
+      <div class="coin-face coin-back">Tails</div>
+    </div>
+  </div>
+  <button id="flipBtn">چرخوندن سکه</button>
+</body>
+</html>
