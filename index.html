@@ -66,24 +66,24 @@
     window.addEventListener("DOMContentLoaded", function() {
       const coin = document.querySelector(".coin");
       const btn = document.getElementById("flipBtn");
+      let previousDeg = 0;
 
       btn.addEventListener("click", function() {
-        // زاویه تصادفی بین 720 تا 1440 درجه
-        const randomDeg = Math.floor(Math.random() * 720 + 720);
+        const randomDeg = previousDeg + Math.floor(Math.random() * 2 + 5) * 180;
+        previousDeg = randomDeg;
         coin.style.transform = "rotateY(" + randomDeg + "deg)";
       });
     });
   </script>
 </head>
 <body>
-<h2 class="mmd">لطفا پس از استفاده از سایت آنرا رفرش کنید</h2>
+<h2 class="mmd">:) نیازی نیست که سایت را رفرش کنید</h2>
   <div class="coin-container">
     <div class="coin">
       <div class="coin-face coin-front">شیر</div>
       <div class="coin-face coin-back">خط</div>
     </div>
   </div>
-  <button id="flipBtn">چرخوندن سکه</button>
+  <button id="flipBtn">چرخاندن سکه</button>
 </body>
 </html>
-
